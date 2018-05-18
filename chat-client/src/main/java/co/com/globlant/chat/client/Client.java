@@ -113,7 +113,7 @@ public class Client implements IClient {
 			}
 
 		} catch (Exception e) {
-			log.writeLog(e.getMessage());
+			log.write(e.getMessage());
 		} finally {
 			terminate();
 		}
@@ -128,7 +128,7 @@ public class Client implements IClient {
 			log.writeLog("closing client socket");
 			clientSocket.close();
 		} catch (Exception e) {
-			log.writeLog("Exception terminate() - " + e.getMessage());
+			log.write("Exception terminate() - " + e.getMessage());
 		}
 		log.write("Client Down.....");
 	}
@@ -163,7 +163,7 @@ public class Client implements IClient {
 					getOutStream().println(messageRead);
 				}
 			} catch (Exception e) {
-				log.writeLog("ConsoleClientReaderListener - Exception while loop ConsoleClientReaderListener " + e.getMessage());
+				log.write("ConsoleClientReaderListener - Exception while loop ConsoleClientReaderListener " + e.getMessage());
 			}
 			log.writeLog("ConsoleClientReaderListener - Saliendo del run() de ConsoleClientReaderListener");
 		}
@@ -188,7 +188,7 @@ public class Client implements IClient {
 					log.writeLog("SocketReaderListener - mesage received " + messageRead);
 				}
 			} catch (Exception e) {
-				log.writeLog("SocketReaderListener -Exception while loop " + e.getMessage());
+				log.write("SocketReaderListener -Exception while loop " + e.getMessage());
 			}
 			finally {
 				terminate();

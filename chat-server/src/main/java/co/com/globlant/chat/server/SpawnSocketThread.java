@@ -63,8 +63,8 @@ public class SpawnSocketThread implements IClient,Runnable {
 			while (working) {								
 				Thread.sleep(IConstants.MAN_THREAD_DELAY);
 			}
-		} catch (InterruptedException e) {
-			log.writeLog(e.getMessage());
+		} catch (Exception e) {
+			log.write(e.getMessage());
 		}
 		finally {
 			terminate();
@@ -123,8 +123,8 @@ public class SpawnSocketThread implements IClient,Runnable {
 			log.writeLog("terminate()");
 			working=false;
 			clientSocket.close();
-		} catch (IOException e) {
-			log.writeLog(e.getMessage());
+		} catch (Exception e) {
+			log.write(e.getMessage());
 		}
 		log.write("Spawn Socket ID " + id + " Down.....");
 	}
@@ -148,7 +148,7 @@ public class SpawnSocketThread implements IClient,Runnable {
 					broadCastReceivedMessage(messageRead);
 				}
 			} catch (Exception e) {
-				log.writeLog("SocketServerReaderListener - Exception while loop " + e.getMessage());
+				log.write("SocketServerReaderListener - Exception while loop " + e.getMessage());
 			}
 			finally {
 				terminate();
