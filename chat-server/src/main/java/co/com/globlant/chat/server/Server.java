@@ -92,15 +92,15 @@ public class Server implements IServer {
 		try {
 			log.write("Server Up......");
 			log.writeLog("initializate()");
-			working = true;
-			readerListenerSetUp();
+			working = true;			
 			serverSocket = new ServerSocket(portNumber);
+			readerListenerSetUp();
 			log.writeLog("Server Socket created");
 			log.write("Address: " + serverSocket.getInetAddress().getHostName() + " Port: " + serverSocket.getLocalPort());
 			getConsoleStdInput();
 			listenForConnection();			
 		} catch (Exception e) {
-			log.writeLog(e.getMessage());
+			log.write(e.getMessage());
 		} finally {
 			terminate();
 		}
@@ -115,8 +115,8 @@ public class Server implements IServer {
 			workersPool.shutdown();
 			serverSocket.close();
 			spawnSocketThreadManagement.killAllSpawnSocketThread();
-		} catch (IOException e) {
-			log.writeLog(e.getMessage());
+		} catch (Exception e) {
+			log.write(e.getMessage());
 		}
 		log.write("Server Down.....");
 	}
@@ -155,8 +155,8 @@ public class Server implements IServer {
 						break;
 					}
 				}
-			} catch (Exception e) {
-				log.writeLog(e.getMessage());
+			}catch (Exception e) {
+				log.write(e.getMessage());
 			}
 			log.writeLog("Saliendo del run() de ConsoleServerReaderListener");
 		}
